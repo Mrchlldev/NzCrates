@@ -20,15 +20,15 @@ final class GiveKeyMenu extends CustomForm {
         $this->onlinePlayers = array_map(fn(Player $p) => $p->getName(), array_values(Server::getInstance()->getOnlinePlayers()));
 
         $this->setTitle("Dar Key");
-        $this->addDropdown("Selecciona el tipo de key", $this->keyTypes);
-        $this->addInput("Cantidad", "Ingresa la cantidad de keys");
-        $this->addDropdown("Selecciona el jugador", $this->onlinePlayers);
+        $this->addDropdown("Select key:", $this->keyTypes);
+        $this->addInput("Amount:", "Amount must be numeric!");
+        $this->addDropdown("Select player:", $this->onlinePlayers);
         $player->sendForm($this);
     }
 
     public function handleResponse(Player $player, $data): void {
         if ($data === null || !isset($this->keyTypes[$data[0]]) || !is_numeric($data[1]) || $data[1] <= 0 || !isset($this->onlinePlayers[$data[2]])) {
-            $player->sendMessage("§cDatos inválidos proporcionados.");
+            $player->sendMessage("§cInvalid data!.");
             return;
         }
         
@@ -39,7 +39,7 @@ final class GiveKeyMenu extends CustomForm {
         $targetPlayer = Server::getInstance()->getPlayerExact($targetPlayerName);
 
         if ($targetPlayer === null) {
-            $player->sendMessage("§cEl jugador seleccionado no está en línea.");
+            $player->sendMessage("§cTarget not found!");
             return;
         }
         $meeting = MeetingManager::getInstance()->getMeeting($targetPlayer)->getCratesData();
@@ -61,10 +61,10 @@ final class GiveKeyMenu extends CustomForm {
                 $meeting->addKeyPegasus($amount);
                 break;
             default:
-                $player->sendMessage("§cTipo de key desconocido.");
+                $player->sendMessage("§cUnknown key type.");
                 return;
         }
 
-        $player->sendMessage("§aHas dado exitosamente §e{$amount} keys de tipo {$keyType} §aa {$targetPlayer->getName()}.");
+        $player->sendMessage("§aSuccesfully send key with amount: §e{$amount} {$keyType} {$targetPlayer->getName()}.");
     }
 }
