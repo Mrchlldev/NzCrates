@@ -73,7 +73,7 @@ class PegasusBoxEntity extends Living {
                         $meeting->reduceKeyPegasus(); 
                         Main::getInstance()->getCrateManager()->getRandomItemFromCrate("pegasus", $damager->getName(), $this);
                     } else {
-                        $damager->sendMessage("§cAl parecer no tienes keys!");
+                        $damager->sendMessage("§cYour key not enough to open!");
                     }
                 }
             }
