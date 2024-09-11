@@ -73,7 +73,7 @@ class MagmaBoxEntity extends Living {
                         $meeting->reduceKeyMagma();
                         Main::getInstance()->getCrateManager()->getRandomItemFromCrate("magma", $damager->getName(), $this);
                     } else {
-                        $damager->sendMessage("§cAl parecer no tienes keys!");
+                        $damager->sendMessage("§cYour key not enough to open!");
                     }
                 }
             }
