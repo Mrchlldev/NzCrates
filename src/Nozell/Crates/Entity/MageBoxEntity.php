@@ -75,7 +75,7 @@ class MageBoxEntity extends Living {
                         $meeting->reduceKeyMage();
                         Main::getInstance()->getCrateManager()->getRandomItemFromCrate("mage", $damager->getName(), $this);
                     } else {
-                        $damager->sendMessage("§cAl parecer no tienes keys!");
+                        $damager->sendMessage("§cYour key not enough to open!");
                     }
                 }
             }
