@@ -19,8 +19,8 @@ class SetItemsMenu extends CustomForm {
 
         $this->crateTypes = ["mage", "ice", "ender", "magma", "pegasus"];
 
-        $this->setTitle("Definir Items para Crate");
-        $this->addDropdown("Selecciona el tipo de crate", $this->crateTypes);
+        $this->setTitle("Add item to crates");
+        $this->addDropdown("Select crates:", $this->crateTypes);
 
         $player->sendForm($this);
     }
@@ -57,7 +57,7 @@ class SetItemsMenu extends CustomForm {
             }
 
             $crateManager->addCrateItems($crateType, $crateItems);
-            $player->sendMessage(TextFormat::GREEN . "Items guardados en el crate '$crateType'.");
+            $player->sendMessage(TextFormat::GREEN . "Succesfully added item to crate: '$crateType'.");
         });
 
         $menu->send($player);
