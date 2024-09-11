@@ -72,7 +72,7 @@ class IceBoxEntity extends Living {
                         $meeting->reduceKeyIce(); 
                         Main::getInstance()->getCrateManager()->getRandomItemFromCrate("ice", $damager->getName(), $this);
                     } else {
-                        $damager->sendMessage("§cAl parecer no tienes keys!");
+                        $damager->sendMessage("§cYour key not enough to open!");
                     }
                 }
             }
