@@ -34,13 +34,13 @@ final class Meeting {
     public function join(): void {
         
         $player = $this->player;
-        $player->sendMessage(TextFormat::colorize('&aCargando Tus Datos ...'));
+        $player->sendMessage(TextFormat::colorize('&aUploading Your Data ...'));
         $this->CratesData->setKeyMage(CratesUtils::getKeyBox($player, "mage"));
         $this->CratesData->setKeyIce(CratesUtils::getKeyBox($player, "ice"));
         $this->CratesData->setKeyEnder(CratesUtils::getKeyBox($player, "ender"));
         $this->CratesData->setKeyMagma(CratesUtils::getKeyBox($player, "magma"));
         $this->CratesData->setKeyPegasus(CratesUtils::getKeyBox($player, "pegasus"));
-        $player->sendMessage(TextFormat::colorize('&aDatos cargados correctamente'));
+        $player->sendMessage(TextFormat::colorize('&aData loaded successfully'));
         
     }
 
