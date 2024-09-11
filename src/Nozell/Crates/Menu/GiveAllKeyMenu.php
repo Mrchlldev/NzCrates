@@ -17,15 +17,15 @@ final class GiveAllKeyMenu extends CustomForm {
 
         $this->keyTypes = ["mage", "ice", "ender", "magma", "pegasus"];
 
-        $this->setTitle("Dar Keys a Todos");
-        $this->addDropdown("Selecciona el tipo de key", $this->keyTypes);
-        $this->addInput("Cantidad", "Ingresa la cantidad de keys");
+        $this->setTitle("Crates");
+        $this->addDropdown("Select crates:", $this->keyTypes);
+        $this->addInput("Amount:", "Numeric only!");
         $player->sendForm($this);
     }
 
     public function handleResponse(Player $player, $data): void {
         if ($data === null || !isset($this->keyTypes[$data[0]]) || $data[1] === '' || $data[1] <= 0 || !ctype_digit($data[1])) {
-            $player->sendMessage("§cDatos inválidos proporcionados.");
+            $player->sendMessage("§cInvalid data!");
             return;
         }
 
@@ -52,13 +52,13 @@ final class GiveAllKeyMenu extends CustomForm {
                     $meeting->addKeyPegasus($amount);
                     break;
                 default:
-                    $player->sendMessage("§cTipo de key desconocido.");
+                    $player->sendMessage("§cUnknown key type.");
                     return;
             }
 
-            $onlinePlayer->sendMessage("§bHas recibido §e{$amount} keys de tipo {$keyType}");
+            $onlinePlayer->sendMessage("§cHello! You received a {$amount}x {$keyType}");
         }
 
-        $player->sendMessage("§aHas dado exitosamente §e{$amount} keys de tipo {$keyType} §aa todos los jugadores en línea.");
+        $player->sendMessage("§aSuccesfully given all player {$keyType} with {$amount}x amount");
     }
 }
