@@ -19,7 +19,7 @@ class CratesCommand extends Command {
         if($sender instanceof Player){
       new MainMenu($sender);
         } else {
-            $sender->sendMessage("Este comando solo puede ser usado en el juego.");
+            $sender->sendMessage("Use this command in-game only!");
         }
     }
 }
